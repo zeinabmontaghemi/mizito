@@ -1,1 +1,7 @@
-<p>project-status works!</p>
+<div class="progress-bar">
+  <div
+    class="progress"
+    [style.width.%]="progress"
+    [ngClass]="{ completed: progress === 100 }"
+  ></div>
+</div>

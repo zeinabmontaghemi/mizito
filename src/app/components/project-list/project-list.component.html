@@ -1,1 +1,27 @@
-<p>project-list works!</p>
+<div class="project-list">
+  <h2>Project List</h2>
+
+  <!-- Loading State -->
+  @if (isLoading) {
+  <div class="loading">Loading projects...</div>
+  }
+
+  <!-- Error State -->
+  @if (isError) {
+  <div class="error">Failed to load projects. Please try again later.</div>
+  }
+
+  <!-- Projects List -->
+  @if (!isLoading && !isError) { @for (project of projects; track project.id) {
+  <div class="project-item">
+    <div class="project-info">
+      <h3>{{ project.name }}</h3>
+      <p>Progress: {{ project.progress }}%</p>
+    </div>
+    <app-project-status [progress]="project.progress"></app-project-status>
+    <button class="details-btn" (click)="navigateToProjectDetails(project.id)">
+      View Details
+    </button>
+  </div>
+  } }
+</div>

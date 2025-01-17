@@ -1,1 +1,20 @@
-<p>dashboard works!</p>
+<app-nav-bar></app-nav-bar>
+
+<div class="dashboard">
+  <div class="left">
+    <app-profile></app-profile>
+    <app-desk-list></app-desk-list>
+  </div>
+  <div class="center">
+    <app-work-desk></app-work-desk>
+    <app-project-list></app-project-list>
+  </div>
+  <!-- @if (isSidebarOpen) {
+  <div class="right">
+    <app-side-bar></app-side-bar>
+  </div>
+  } -->
+  <div class="right" [class.open]="isSidebarOpen">
+    <app-side-bar></app-side-bar>
+  </div>
+</div>

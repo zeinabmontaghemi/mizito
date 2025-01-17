@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-status',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './project-status.component.html',
-  styleUrl: './project-status.component.scss'
+  styleUrl: './project-status.component.scss',
 })
 export class ProjectStatusComponent {
-
+  @Input() progress: number = 0;
 }
