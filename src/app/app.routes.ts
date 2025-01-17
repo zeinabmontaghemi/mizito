@@ -7,11 +7,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { ProjectComponent } from './components/project/project.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/edit-profile/:id', component: EditProfileComponent },
   { path: 'dashboard/project-list', component: ProjectListComponent },
+  {path:'dashboard/create-project' , component: ProjectComponent}
   { path: 'dashboard/task-list', component: TaskListComponent },
   { path: 'mizito', component: LoginComponent },
   { path: 'mizito/signin', component: SignInComponent },
