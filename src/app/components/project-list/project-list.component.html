@@ -4,10 +4,13 @@
     + Create New Project
   </button>
 
-  <div class="projects-container" *ngIf="!isLoading && !isError">
+  <!-- Use @if to conditionally display content -->
+  @if (!isLoading && !isError) {
+  <div class="projects-container">
+    <!-- Use @for for looping through projects -->
+    @for (project of projects ; track project.id) {
     <div
       class="project-box"
-      *ngFor="let project of projects"
       draggable="true"
       (click)="navigateToProjectDetails(project.id)"
     >
@@ -16,14 +19,15 @@
         alt="Project Image"
       />
       <h3>{{ project.name }}</h3>
-      <p>Created: {{ project.createdAt | date }}</p>
-      <p>Updated: {{ project.updatedAt | date }}</p>
+      <app-project-status></app-project-status>
     </div>
+    }
   </div>
-
-  <div class="loading" *ngIf="isLoading">Loading projects...</div>
-
-  <div class="error" *ngIf="isError">
-    Failed to load projects. Please try again later.
-  </div>
+  } @else {
+  <!-- Handle loading and error states -->
+  @if (isLoading) {
+  <div class="loading">Loading projects...</div>
+  } @else {
+  <div class="error">Failed to load projects. Please try again later.</div>
+  } }
 </div>
