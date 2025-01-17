@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -20,6 +21,7 @@ export class EditProfileComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private AuthService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -74,5 +76,9 @@ export class EditProfileComponent implements OnInit {
     } else {
       this.errorMessage = 'Please fill out all required fields.';
     }
+  }
+  logout(): void {
+    this.AuthService.logout();
+    this.router.navigate(['mizito']);
   }
 }

@@ -1,103 +1,103 @@
-<!-- <app-nav-bar></app-nav-bar> -->
-<div class="signUp-container">
-  <!-- Success Message -->
-  @if (successMessage) {
-  <div class="success-message">{{ successMessage }}</div>
-  }
+<div class="container">
+  <div class="signUp-container">
+    <!-- Success Message -->
+    @if (successMessage) {
+    <div class="success-message">{{ successMessage }}</div>
+    }
 
-  <!-- Error Message -->
-  @if (errorMessage) {
-  <div class="error-message">{{ errorMessage }}</div>
-  }
+    <!-- Error Message -->
+    @if (errorMessage) {
+    <div class="error-message">{{ errorMessage }}</div>
+    }
 
-  <!-- User Form -->
-  <form [formGroup]="signUpForm" (ngSubmit)="addUser()" class="user-form">
-    <!-- Username -->
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input
-        id="username"
-        type="text"
-        formControlName="username"
-        class="form-control"
-        [class.is-invalid]="
-          signUpForm.controls.username.invalid &&
-          signUpForm.controls.username.touched
-        "
-      />
-      @if ( signUpForm.controls.username.invalid &&
-      signUpForm.controls.username.touched ) {
-      <div class="invalid-feedback">Username is required.</div>
-      }
-    </div>
-
-    <!-- Password -->
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        formControlName="password"
-        class="form-control"
-        [class.is-invalid]="
-          signUpForm.controls.password.invalid &&
-          signUpForm.controls.password.touched
-        "
-      />
-      @if ( signUpForm.controls.password.invalid &&
-      signUpForm.controls.password.touched ) {
-      <div class="invalid-feedback">
-        Password is required and must have combination of these a-z+A-Z+0-9+!
+    <!-- User Form -->
+    <form [formGroup]="signUpForm" (ngSubmit)="addUser()" class="user-form">
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control"
+          [class.is-invalid]="
+            signUpForm.controls.username.invalid &&
+            signUpForm.controls.username.touched
+          "
+        />
+        @if ( signUpForm.controls.username.invalid &&
+        signUpForm.controls.username.touched ) {
+        <div class="invalid-feedback">Username is required.</div>
+        }
       </div>
-      }
-    </div>
-    <!-- Password -->
-    <div class="form-group">
-      <label for="confirmpassword">confirm password</label>
-      <input
-        id="confirmpassword"
-        type="confirmPassword"
-        formControlName="confirmPassword"
-        class="form-control"
-        [class.is-invalid]="
-          signUpForm.controls.confirmPassword.invalid &&
-          signUpForm.controls.confirmPassword.touched
-        "
-      />
-      @if ( signUpForm.controls.confirmPassword.invalid &&
-      signUpForm.controls.confirmPassword.touched ) {
-      <div class="invalid-feedback">Password is not true</div>
-      }
-    </div>
 
-    <!-- email -->
-    <div class="form-group">
-      <label for="email">email</label>
-      <input
-        id="email"
-        type="text"
-        formControlName="email"
-        class="form-control"
-        [class.is-invalid]="
-          signUpForm.controls.email.invalid && signUpForm.controls.email.touched
-        "
-      />
-      @if ( signUpForm.controls.email.invalid &&
-      signUpForm.controls.email.touched ) {
-      <div class="invalid-feedback">
-        National Code must be exactly 10 digits.
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="
+            signUpForm.controls.password.invalid &&
+            signUpForm.controls.password.touched
+          "
+        />
+        @if ( signUpForm.controls.password.invalid &&
+        signUpForm.controls.password.touched ) {
+        <div class="invalid-feedback">
+          Password is required and must have combination of these a-z+A-Z+0-9+!
+        </div>
+        }
       </div>
-      }
-    </div>
+      <!-- Password -->
+      <div class="form-group">
+        <label for="confirmpassword">confirm password</label>
+        <input
+          id="confirmpassword"
+          type="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          [class.is-invalid]="
+            signUpForm.controls.confirmPassword.invalid &&
+            signUpForm.controls.confirmPassword.touched
+          "
+        />
+        @if ( signUpForm.controls.confirmPassword.invalid &&
+        signUpForm.controls.confirmPassword.touched ) {
+        <div class="invalid-feedback">Password is not true</div>
+        }
+      </div>
 
-    <!-- Submit Button -->
-    <button
-      type="submit"
-      [disabled]="signUpForm.invalid"
-      class="btn btn-primary"
-    >
-      Add User
-    </button>
-    <button (click)="back_to_login()">Back</button>
-  </form>
+      <!-- email -->
+      <div class="form-group">
+        <label for="email">email</label>
+        <input
+          id="email"
+          type="text"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="
+            signUpForm.controls.email.invalid &&
+            signUpForm.controls.email.touched
+          "
+        />
+        @if ( signUpForm.controls.email.invalid &&
+        signUpForm.controls.email.touched ) {
+        <div class="invalid-feedback">email is not valid</div>
+        }
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="signUpForm.invalid"
+        class="btn btn-primary"
+      >
+        Add User
+      </button>
+      <button (click)="back_to_login()">Back</button>
+    </form>
+  </div>
 </div>

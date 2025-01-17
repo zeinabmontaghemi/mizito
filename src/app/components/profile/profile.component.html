@@ -1,16 +1,21 @@
-@if (isLoading) {
-<div class="loading">Loading profile...</div>
-} @if (!isLoading && !isError) {
 <div class="profile-container">
   <img [src]="userProfileImage" alt="Profile Image" class="profile-image" />
-  <h2>{{ username }}</h2>
+  <h2>{{ !isError && !isLoading ? username : "Unknown User" }}</h2>
   <div>
-    <p>role:{{ userRole }}</p>
-    <p>status:{{ userStatus }}</p>
+    <p>Role: {{ userRole }}</p>
+    <p>Status: {{ userStatus }}</p>
     <p>Time: {{ systemTime }}</p>
   </div>
-  <button (click)="navigateToEditProfile()">Edit Profile</button>
+  @if (isLoading){
+  <div class="loading">Loading profile...</div>
+  } @if(isError){
+  <div class="error">Failed to load profile. Please try again.</div>
+  }
+  <button
+    (click)="navigateToEditProfile()"
+    [disabled]="isLoading || isError"
+    class="edit-button"
+  >
+    Edit Profile
+  </button>
 </div>
-} @if (isError) {
-<div class="error">Failed to load profile. Please try again.</div>
-}

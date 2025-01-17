@@ -1,0 +1,154 @@
+/* Overall container styling */
+.container {
+  display: flex;
+  background-color: #6b93ff;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  font-family: "Arial", sans-serif;
+  text-align: center;
+}
+
+/* SignUp form container styling */
+.signUp-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+}
+
+/* Header styling */
+.signUp-container h2 {
+  margin-bottom: 20px;
+  color: #007bff;
+  font-size: 24px;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  text-align: left;
+}
+.form-control {
+  width: 90%;
+}
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  color: #333;
+}
+
+/* Input field styling */
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+/* Focused input field styling */
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Error message styling */
+.error-message {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Hide error message when no error */
+.error-message.hidden {
+  display: none;
+}
+
+/* Feedback message styling */
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+  max-width: 380px; /* Restrict button width for better layout */
+}
+
+/* Disabled button styling */
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Button hover effect */
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Back button styling */
+button:last-child {
+  background-color: #010101;
+  color: #fff;
+  width: 80px;
+  text-align: center;
+}
+
+button:last-child:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+/* Success message styling */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #c3e6cb;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Create account section */
+.create-account {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.create-account a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}

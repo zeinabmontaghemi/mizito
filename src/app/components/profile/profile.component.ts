@@ -12,11 +12,14 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   userProfileImage = 'assets/download.png';
-  username = '';
-  userRole = '';
-  userStatus = ''; // offline
-  systemTime: string | null = null;
-
+  username = 'Loading...';
+  userRole = 'N/A';
+  userStatus = 'Loading...'; // offline
+  systemTime = new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: '2-digit',
+    hour: '2-digit',
+  }).format(new Date());
   userId: number | null | undefined = null;
   isLoading = true;
   isError = false;
@@ -39,7 +42,6 @@ export class ProfileComponent implements OnInit {
           month: 'long',
           day: '2-digit',
           hour: '2-digit',
-          minute: '2-digit',
         }).format(new Date());
         if (user.imageUrl) {
           this.userProfileImage = user.imageUrl;
