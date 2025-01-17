@@ -35,19 +35,25 @@ export class ProjectListComponent implements OnInit {
   }
 
   navigateToProjectDetails(projectId?: number): void {
-    this.router.navigate([`/projects/${projectId}`]);
+    this.router.navigate([`dashboard/project-details/${projectId}`]);
   }
-
-  deleteProject(projectId: number): void {
-    this.projectService.deleteProject(projectId).subscribe({
-      next: () => {
-        this.projects = this.projects.filter(
-          (project) => project.id !== projectId
-        );
-      },
-      error: () => {
-        console.error('Failed to delete project');
-      },
-    });
+  createNewProject(): void {
+    this.router.navigate(['dashboard/create-project']);
+  }
+  // deleteProject(projectId: number): void {
+  //   this.projectService.deleteProject(projectId).subscribe({
+  //     next: () => {
+  //       this.projects = this.projects.filter(
+  //         (project) => project.id !== projectId
+  //       );
+  //     },
+  //     error: () => {
+  //       console.error('Failed to delete project');
+  //     },
+  //   });
+  // }
+  onDragEnd(event: any): void {
+    // Handle reordering logic here if needed.
+    console.log('New layout after drag:', event);
   }
 }

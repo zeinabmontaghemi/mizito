@@ -1,28 +1,29 @@
-<div class="project-list">
-  <h2>Project List</h2>
+<div class="projects-list">
+  <h1>Projects</h1>
+  <button class="create-btn" (click)="createNewProject()">
+    + Create New Project
+  </button>
 
-  <!-- Loading State -->
-  @if (isLoading) {
-  <div class="loading">Loading projects...</div>
-  }
-
-  <!-- Error State -->
-  @if (isError) {
-  <div class="error">Failed to load projects. Please try again later.</div>
-  }
-
-  <!-- Projects List -->
-  @if (!isLoading && !isError) { @for (project of projects; track project.id) {
-  <div class="project-item">
-    <div class="project-info">
+  <div class="projects-container" *ngIf="!isLoading && !isError">
+    <div
+      class="project-box"
+      *ngFor="let project of projects"
+      draggable="true"
+      (click)="navigateToProjectDetails(project.id)"
+    >
+      <img
+        [src]="project.imageUrl || 'assets/default-project.png'"
+        alt="Project Image"
+      />
       <h3>{{ project.name }}</h3>
-      <!-- <p>Progress: {{ project.progress }}%</p> -->
+      <p>Created: {{ project.createdAt | date }}</p>
+      <p>Updated: {{ project.updatedAt | date }}</p>
     </div>
-    <!-- <app-project-status [progress]="project.progress"></app-project-status> -->
-    <app-project-status></app-project-status>
-    <button class="details-btn" (click)="navigateToProjectDetails(project.id)">
-      View Details
-    </button>
   </div>
-  } }
+
+  <div class="loading" *ngIf="isLoading">Loading projects...</div>
+
+  <div class="error" *ngIf="isError">
+    Failed to load projects. Please try again later.
+  </div>
 </div>
