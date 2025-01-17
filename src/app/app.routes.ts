@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/edit-profile/:id', component: EditProfileComponent },
   { path: 'dashboard/project-list', component: ProjectListComponent },
-  {path:'dashboard/create-project' , component: ProjectComponent}
+  { path: 'dashboard/create-project', component: ProjectComponent },
   { path: 'dashboard/task-list', component: TaskListComponent },
   { path: 'mizito', component: LoginComponent },
   { path: 'mizito/signin', component: SignInComponent },
