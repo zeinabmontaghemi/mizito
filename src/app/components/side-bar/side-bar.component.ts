@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,7 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent {
-  navigateToProjectsList() {}
+  constructor(private router: Router) {}
+  navigateToProjectsList() {
+    this.router.navigate(['dashboard/project-list']);
+  }
 
-  navigateToTaskList() {}
+  navigateToTaskList() {
+    this.router.navigate(['dashboard/task-list']);
+  }
 }

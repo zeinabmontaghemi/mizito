@@ -16,9 +16,10 @@
   <div class="project-item">
     <div class="project-info">
       <h3>{{ project.name }}</h3>
-      <p>Progress: {{ project.progress }}%</p>
+      <!-- <p>Progress: {{ project.progress }}%</p> -->
     </div>
-    <app-project-status [progress]="project.progress"></app-project-status>
+    <!-- <app-project-status [progress]="project.progress"></app-project-status> -->
+    <app-project-status></app-project-status>
     <button class="details-btn" (click)="navigateToProjectDetails(project.id)">
       View Details
     </button>
