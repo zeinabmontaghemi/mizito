@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 export class SideBarComponent {
   constructor(private router: Router) {}
   navigateToProjectsList() {
-    this.router.navigate(['dashboard/project-list']);
+    this.router.navigate(['mizito/dashboard/project-list']);
   }
 
   navigateToTaskList() {
-    this.router.navigate(['dashboard/task-list']);
+    this.router.navigate(['mizito/dashboard/task-list']);
   }
 }

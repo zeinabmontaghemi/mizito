@@ -12,13 +12,19 @@ import { AddProjectComponent } from './components/add-project/add-project.compon
 import { ProjectsBoardComponent } from './components/projects-board/projects-board.component';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'dashboard/edit-profile/:id', component: EditProfileComponent },
-  { path: 'dashboard/project-list', component: ProjectListComponent },
-  { path: 'dashboard/create-project', component: AddProjectComponent },
+  { path: 'mizito', component: LoginComponent },
+  { path: 'mizito/signin', component: SignInComponent },
+  { path: 'mizito/signup', component: SignUpComponent },
+  { path: 'mizito/dashboard', component: DashboardComponent },
+  {
+    path: 'mizito/dashboard/edit-profile/:id',
+    component: EditProfileComponent,
+  },
+  { path: 'mizito/dashboard/project-list', component: ProjectListComponent },
+  { path: 'mizito/dashboard/create-project', component: AddProjectComponent },
   // { path: 'dashboard/project-details/:id', component: ProjectComponent },
   {
-    path: 'dashboard',
+    path: 'mizito/dashboard',
     children: [
       {
         path: 'project-details/:id',
@@ -38,10 +44,6 @@ export const routes: Routes = [
   },
   // { path: 'dashboard/task-list', component: TaskListComponent },
 
-  { path: 'mizito', component: LoginComponent },
-  { path: 'mizito/signin', component: SignInComponent },
-  { path: 'mizito/signup', component: SignUpComponent },
-  { path: 'mizito/dashboard', component: DashboardComponent },
   { path: '', redirectTo: 'mizito', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

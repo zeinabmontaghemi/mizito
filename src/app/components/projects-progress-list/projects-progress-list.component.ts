@@ -37,7 +37,7 @@ export class ProjectsProgressListComponent implements OnInit {
   }
 
   navigateToProjectDetails(projectId?: number): void {
-    this.router.navigate([`dashboard/project-details/${projectId}`]);
+    this.router.navigate([`mizito/dashboard/project-details/${projectId}`]);
   }
   getDefaultProjects(): Project[] {
     // Return default data when the fetch fails

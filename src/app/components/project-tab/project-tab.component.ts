@@ -24,6 +24,6 @@ export class ProjectTabComponent implements OnInit {
     this.router.navigate(['project-board'], { relativeTo: this.route });
   }
   back_to_dashboard() {
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['mizito/dashboard']);
   }
 }

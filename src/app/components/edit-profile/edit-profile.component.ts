@@ -71,7 +71,7 @@ export class EditProfileComponent implements OnInit {
         next: () => {
           this.successMessage = 'User updated successfully!';
           /////////////////////////////////////////////create the rout after every rout was complete
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['mizito/dashboard']);
         },
         error: () => {
           this.errorMessage = 'An error occurred while updating the user.';

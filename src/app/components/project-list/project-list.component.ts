@@ -37,10 +37,10 @@ export class ProjectListComponent implements OnInit {
   }
 
   navigateToProjectDetails(projectId?: number): void {
-    this.router.navigate([`dashboard/project-details/${projectId}`]);
+    this.router.navigate([`mizito/dashboard/project-details/${projectId}`]);
   }
   createNewProject(): void {
-    this.router.navigate(['dashboard/create-project']);
+    this.router.navigate(['mizito/dashboard/create-project']);
   }
 
   onDragEnd(event: any): void {

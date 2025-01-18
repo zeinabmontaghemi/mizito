@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
   }
 
   navigateToEditProfile(): void {
-    this.router.navigate([`dashboard/edit-profile/${this.userId}`]);
+    this.router.navigate([`mizito/dashboard/edit-profile/${this.userId}`]);
   }
 
   updateSystemTime(): void {

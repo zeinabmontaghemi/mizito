@@ -16,3 +16,14 @@ app-project-tab {
   background-color: #f8f9fa; /* You can add a background color if needed */
   border-left: 1px solid #ddd; /* Optional: Add a separator between the sections */
 }
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.project-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+}
