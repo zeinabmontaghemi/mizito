@@ -8,13 +8,36 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { ProjectComponent } from './components/project/project.component';
+import { AddProjectComponent } from './components/add-project/add-project.component';
+import { ProjectsBoardComponent } from './components/projects-board/projects-board.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'dashboard/edit-profile/:id', component: EditProfileComponent },
   { path: 'dashboard/project-list', component: ProjectListComponent },
-  { path: 'dashboard/create-project', component: ProjectComponent },
-  { path: 'dashboard/task-list', component: TaskListComponent },
+  { path: 'dashboard/create-project', component: AddProjectComponent },
+  // { path: 'dashboard/project-details/:id', component: ProjectComponent },
+  {
+    path: 'dashboard',
+    children: [
+      {
+        path: 'project-details/:id',
+        component: ProjectComponent, // This is the parent component
+        children: [
+          {
+            path: 'task-list', // For first tab button
+            component: TaskListComponent, // The component you want to load when the first tab is clicked
+          },
+          {
+            path: 'project-board', // For second tab button
+            component: ProjectsBoardComponent, // The component you want to load when the second tab is clicked
+          },
+        ],
+      },
+    ],
+  },
+  // { path: 'dashboard/task-list', component: TaskListComponent },
+
   { path: 'mizito', component: LoginComponent },
   { path: 'mizito/signin', component: SignInComponent },
   { path: 'mizito/signup', component: SignUpComponent },

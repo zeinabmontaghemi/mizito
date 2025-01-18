@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  height: 100vh; /* Full viewport height */
+  height: 100%; /* Full viewport height */
   overflow: hidden; /* Hide any overflowing content */
 }
 
@@ -16,7 +16,7 @@
 }
 
 .center {
-  width: 600px; /* Fixed width for center section */
+  width: 75%; /* Fixed width for center section */
   display: flex;
   flex-direction: column;
   background-color: #ffffff;

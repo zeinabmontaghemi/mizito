@@ -49,11 +49,12 @@ export class ProfileComponent implements OnInit {
         this.isLoading = false;
       },
       error: () => {
+        /// return is error to true
+        this.setDefaultUser();
         this.isError = true;
         this.isLoading = false;
       },
     });
-    this.isLoading = false;
   }
 
   navigateToEditProfile(): void {
@@ -64,5 +65,13 @@ export class ProfileComponent implements OnInit {
     setInterval(() => {
       this.systemTime = new Date().toLocaleString();
     }, 1000); // Updates every second
+  }
+  setDefaultUser(): void {
+    // Fake user data in case of error or loading
+    this.username = 'John Doe';
+    this.userRole = 'ROLE_USER';
+    this.userStatus = 'offline'; // You can set it as 'offline' by default
+    this.userId = 999; // Fake user ID
+    this.userProfileImage = 'assets/download.png'; // Fake image URL
   }
 }

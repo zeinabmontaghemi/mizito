@@ -28,6 +28,8 @@ export class ProjectListComponent implements OnInit {
         this.isLoading = false;
       },
       error: () => {
+        this.projects = this.getDefaultProjects();
+        /////change this if data fetch correctly to true
         this.isError = true;
         this.isLoading = false;
       },
@@ -44,5 +46,38 @@ export class ProjectListComponent implements OnInit {
   onDragEnd(event: any): void {
     // Handle reordering logic here if needed.
     console.log('New layout after drag:', event);
+  }
+
+  getDefaultProjects(): Project[] {
+    // Return default data when the fetch fails
+    return [
+      {
+        id: 1,
+        name: 'Test Project A',
+        teamId: 101,
+        members: [],
+        createdAt: '2025-01-10',
+        updatedAt: '2025-01-12',
+        imageUrl: 'assets/project.jpg',
+      },
+      {
+        id: 2,
+        name: 'Test Project B',
+        teamId: 102,
+        members: [],
+        createdAt: '2025-01-05',
+        updatedAt: '2025-01-15',
+        imageUrl: 'assets/project.jpg',
+      },
+      {
+        id: 3,
+        name: 'Test Project C',
+        teamId: 103,
+        members: [],
+        createdAt: '2025-01-01',
+        updatedAt: '2025-01-10',
+        imageUrl: 'assets/project.jpg',
+      },
+    ];
   }
 }

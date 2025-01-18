@@ -1,0 +1,29 @@
+/* Tabs container */
+.tabs {
+  display: flex;
+  gap: 20px;
+}
+
+/* Button styling */
+.tab-button {
+  background-color: #963939;
+  border: 1px solid #592b2b;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background-color: #933110;
+  color: white;
+}
+
+/* Router outlet container */
+.project-details-container {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #ed5252;
+}

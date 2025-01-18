@@ -26,12 +26,12 @@ export interface Responsible {
 }
 
 export interface Project {
-  id: number;
+  id?: number;
   name: string;
   teamId: number;
-  members: User[];
-  createdAt: string;
-  updatedAt: string;
+  members?: User[];
+  createdAt?: string;
+  updatedAt?: string;
   imageUrl: string;
 }
 

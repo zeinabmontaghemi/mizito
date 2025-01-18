@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,6 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
+import { Router } from '@angular/router';
+import { AddProject } from '../../models/addProject';
+import { Project } from '../../models/task';
 
 @Component({
   selector: 'app-add-project',
@@ -15,31 +18,49 @@ import { ProjectService } from '../../services/project.service';
   styleUrl: './add-project.component.scss',
 })
 export class AddProjectComponent {
-  projectForm: FormGroup;
+  createProjectForm: FormGroup<AddProject>;
+  isLoading = false;
+  errorMessage: string = '';
 
   constructor(
+    private formBuilder: FormBuilder,
     private projectService: ProjectService,
-    private formBuilder: FormBuilder
+    private router: Router
   ) {
-    this.projectForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      description: [''],
-      startDate: ['', Validators.required],
-      endDate: [''],
+    this.createProjectForm = this.formBuilder.group<AddProject>({
+      name: this.formBuilder.control('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      teamId: this.formBuilder.control('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      imageUrl: this.formBuilder.control('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.min(0)],
+      }),
     });
   }
+  addProduct(): void {
+    if (this.createProjectForm.valid) {
+      const rawProject = this.createProjectForm.getRawValue();
+      console.log(rawProject);
+      const newProject: Project = {
+        ...rawProject,
+        teamId: Number(rawProject.teamId),
+      };
+      console.log(newProject);
 
-  createProject(): void {
-    if (this.projectForm.valid) {
-      this.projectService.createProject(this.projectForm.value).subscribe({
-        next: (project) => {
-          console.log('Project created:', project);
-          // Navigate or provide feedback to the user
+      this.projectService.createProject(newProject).subscribe({
+        next: () => {
+          alert('Product added successfully!');
+          this.createProjectForm.reset();
         },
-        error: (err) => {
-          console.error('Error creating project:', err);
-        },
+        error: (err) => alert(`Error: ${err.message}`),
       });
+    } else {
+      alert('Form is invalid. Please check the fields and try again.');
     }
   }
 }

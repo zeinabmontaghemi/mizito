@@ -3,11 +3,15 @@
   <button class="create-btn" (click)="createNewProject()">
     + Create New Project
   </button>
+  @if (isLoading) {
+  <div class="loading">Loading projects...</div>
+  } @if(isError) {
+  <div class="error">Failed to load projects. Please try again later.</div>
+  }
 
   <!-- Use @if to conditionally display content -->
-
+  @if (!isLoading && !isError) {
   <div class="projects-container">
-    @if (!isLoading && !isError) {
     <!-- Use @for for looping through projects -->
     @for (project of projects ; track project.id) {
     <div
@@ -22,12 +26,7 @@
       <h3>{{ project.name }}</h3>
       <app-project-status [projectId]="1"></app-project-status>
     </div>
-    } } @else {
-    <!-- Handle loading and error states -->
-    @if (isLoading) {
-    <div class="loading">Loading projects...</div>
-    } @else {
-    <div class="error">Failed to load projects. Please try again later.</div>
-    } }
+    }
   </div>
+  }
 </div>

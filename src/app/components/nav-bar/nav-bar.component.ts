@@ -17,10 +17,10 @@ export class NavBarComponent {
     private sidebarService: SidebarService,
     private router: Router
   ) {}
-  logout(): void {
-    this.AuthService.logout();
-    this.router.navigate(['mizito']);
-  }
+  // logout(): void {
+  //   this.AuthService.logout();
+  //   this.router.navigate(['mizito']);
+  // }
 
   toggleSidebar(): void {
     this.sidebarService.toggleSidebar();

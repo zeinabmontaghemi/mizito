@@ -1,6 +1,11 @@
 .projects-list {
   padding: 20px;
-
+  background-color: #5fa2ea;
+  position: fixed; /* Ensures the menu is fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the width 100% to cover the entire screen */
+  height: 100%;
   h1 {
     text-align: center;
   }
@@ -43,7 +48,7 @@
     }
 
     img {
-      width: 100%;
+      width: 100px;
       height: 100px;
       object-fit: cover;
       border-radius: 8px 8px 0 0;

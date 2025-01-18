@@ -1,1 +1,12 @@
-<p>project-tab works!</p>
+<div class="project-details-container">
+  <div class="tabs">
+    <button class="tab-button" (click)="back_to_dashboard()">Back</button>
+    <button class="tab-button" (click)="navigateToTaskList()">Task List</button>
+
+    <button class="tab-button" (click)="navigateToProjectBoard()">
+      Project Board
+    </button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
