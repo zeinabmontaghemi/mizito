@@ -1,0 +1,124 @@
+/* Create a flexbox container to center the form */
+.container {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  height: 900px;
+  background-color: #6b93ff; /* Light background color for the page */
+}
+
+/* Profile Edit Form Styling */
+.edit-profile-container {
+  background-color: #fff;
+  padding: 5px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Max width of the form */
+  margin: 20px;
+  height: 780px;
+}
+
+/* Title Styling */
+.edit-profile-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Profile Image Styling */
+.profile-image {
+  display: block;
+  margin: 0 auto 20px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+}
+
+/* Form Inputs and Select Fields */
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 2px;
+  display: block;
+  color: #333;
+}
+
+input.form-control,
+select.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+input.form-control:focus,
+select.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Invalid Feedback Styling */
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 14px;
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+  background-color: #c6c6c6;
+  cursor: not-allowed;
+}
+
+/* Success/Failure Messages Styling */
+.alert {
+  margin-top: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Logout Button Styling */
+button.logout-btn {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.logout-btn:hover {
+  background-color: #c82333;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../models/user';
@@ -8,11 +8,12 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss',
 })
 export class EditProfileComponent implements OnInit {
+  userProfileImage = 'assets/download.png';
   userId!: number; // The user ID from the route params
   editProfileForm!: FormGroup;
   errorMessage = '';
@@ -28,10 +29,12 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.editProfileForm = this.formBuilder.group({
-      role: [''],
       username: [''],
       password: [''],
       email: [''],
+      role: [''],
+      image: [''],
+      active: [''],
     });
 
     this.userId = Number(this.activatedRoute.snapshot.paramMap.get('id') || 0);
@@ -48,11 +51,12 @@ export class EditProfileComponent implements OnInit {
 
   createForm(user: User): void {
     this.editProfileForm.setValue({
-      role: user.userRole,
       username: user.username,
       password: user.password,
       email: user.email,
-      ///image
+      role: user.userRole,
+      active: user.active,
+      image: user.imageUrl,
     });
   }
 
@@ -60,7 +64,7 @@ export class EditProfileComponent implements OnInit {
     if (this.editProfileForm.valid) {
       const updatedUser: User = {
         ...this.editProfileForm.value,
-        id: this.userId,
+        active: Boolean(this.editProfileForm.value.active),
       };
 
       this.userService.updateUser(this.userId, updatedUser).subscribe({

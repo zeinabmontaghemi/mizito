@@ -63,24 +63,25 @@ export class SignUpComponent {
 
       this.authService.signup(signUpInfo).subscribe({
         next: () => {
+          this.successMessage = 'User signed up successfully!';
+          this.signUpForm.reset();
+          this.router.navigate(['mizito/dashboard']);
           // Fetch user data after signup to determine admin status
-          this.userService.getUser().subscribe({
-            next: (user) => {
-              const isAdmin = user.userRole === 'ROLE_ADMIN';
-              this.authService.setAdminStatus(isAdmin);
-              this.successMessage = 'User signed up successfully!';
-              this.signUpForm.reset();
-              this.router.navigate(['mizito/dashboard']);
-            },
-            error: (err) => {
-              this.isLoading = false;
-              this.errorMessage = 'Failed to fetch user data after signup.';
-              console.error('Error fetching user data:', err);
-            },
-            complete: () => {
-              this.isLoading = false;
-            },
-          });
+          // this.userService.getUser().subscribe({
+          //   next: (user) => {
+          // const isAdmin = user.userRole === 'ROLE_ADMIN';
+          // this.authService.setAdminStatus(isAdmin);
+
+          // },
+          // error: (err) => {
+          //   this.isLoading = false;
+          //   this.errorMessage = 'Failed to fetch user data after signup.';
+          //   console.error('Error fetching user data:', err);
+          // },
+          // complete: () => {
+          //   this.isLoading = false;
+          // },
+          // });
         },
         error: (error) => {
           this.isLoading = false;

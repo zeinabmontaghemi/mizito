@@ -1,2 +1,110 @@
-<p>edit-profile works!</p>
-<button (click)="logout()">Logout</button>
+<div class="container">
+  <div class="edit-profile-container">
+    <!-- Error/Success Messages -->
+    @if(errorMessage){
+    <div class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+    } @if(successMessage){
+    <div class="alert alert-success mt-3">
+      {{ successMessage }}
+    </div>
+    }
+    <h2>Edit Your Profile</h2>
+    <img [src]="userProfileImage" alt="Profile Image" class="profile-image" />
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="updateUser()">
+      <div class="form-group mb-3">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          formControlName="username"
+          placeholder="Enter username"
+        />
+        @if(editProfileForm.get('username')?.invalid &&
+        editProfileForm.get('username')?.touched ){
+        <div class="invalid-feedback">Username is required.</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Enter password"
+        />
+        @if(editProfileForm.get('password')?.invalid &&
+        editProfileForm.get('password')?.touched){
+        <div class="invalid-feedback">Password is required.</div>
+        }
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Enter email"
+        />
+        @if(editProfileForm.get('email')?.invalid &&
+        editProfileForm.get('email')?.touched){
+        <div class="invalid-feedback">Email is required.</div>
+        }
+      </div>
+
+      <!-- Role Field -->
+      <div class="form-group mb-3">
+        <label for="role">Role</label>
+        <select id="role" class="form-control" formControlName="role">
+          <option [value]="'ROLE_APPLICATION_USER'">Normal User</option>
+          <option [value]="'ROLE_ADMIN'">Admin</option>
+        </select>
+        @if(editProfileForm.get('role')?.invalid &&
+        editProfileForm.get('role')?.touched){
+        <div class="invalid-feedback">Role is required.</div>
+        }
+      </div>
+
+      <!-- Active Field -->
+      <div class="form-group mb-3">
+        <label for="active">Active</label>
+        <select id="active" class="form-control" formControlName="active">
+          <option [value]="true">Active</option>
+          <option [value]="false">Inactive</option></select
+        >@if(editProfileForm.get('active')?.invalid &&
+        editProfileForm.get('active')?.touched) {
+        <div class="invalid-feedback">Active status is required.</div>
+        }
+      </div>
+
+      <!-- Image Field -->
+      <div class="form-group mb-3">
+        <label for="image">Profile Image</label>
+        <input
+          id="image"
+          type="file"
+          class="form-control"
+          formControlName="image"
+          placeholder="Upload an image"
+        />
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="editProfileForm.invalid"
+      >
+        Update Profile
+      </button>
+    </form>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+</div>

@@ -1,60 +1,76 @@
 import { Injectable } from '@angular/core';
-import {
-  SubTask,
-  CreateSubTask,
-  GetSubTasksResponse,
-} from '../models/sub-task';
+import { SubTask, CreateOrUpdateSubTask } from '../models/sub-task';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class SubTaskService {
-  private apiUrl = 'http://your-backend-url/api/tasks';
+  private readonly baseUrl = 'https://api.example.com/tasks'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
-  // Get all subtasks for a specific task
-  getAllSubTasks(taskId: number): Observable<SubTask[]> {
-    return this.http
-      .get<GetSubTasksResponse>(`${this.apiUrl}/${taskId}/subtasks/all`)
-      .pipe(map((response) => response.subTasks));
-  }
-
-  // Get a specific subtask by ID
-  getSubTaskById(taskId: number, subTaskId: number): Observable<SubTask> {
+  /**
+   * Get a subtask by task ID and subtask ID.
+   * @param taskId Task ID.
+   * @param subTaskId Subtask ID.
+   */
+  getSubTask(taskId: number, subTaskId: number): Observable<SubTask> {
     return this.http.get<SubTask>(
-      `${this.apiUrl}/${taskId}/subtasks/${subTaskId}`
+      `${this.baseUrl}/${taskId}/subtasks/${subTaskId}`
     );
   }
 
-  // Create a new subtask
+  /**
+   * Create a new subtask for a task.
+   * @param taskId Task ID.
+   * @param subTask Subtask creation payload.
+   */
   createSubTask(
     taskId: number,
-    subTaskData: CreateSubTask
+    subTask: CreateOrUpdateSubTask
   ): Observable<SubTask> {
     return this.http.post<SubTask>(
-      `${this.apiUrl}/${taskId}/subtasks`,
-      subTaskData
+      `${this.baseUrl}/${taskId}/subtasks`,
+      subTask
     );
   }
 
-  // Update an existing subtask
+  /**
+   * Update an existing subtask.
+   * @param taskId Task ID.
+   * @param subTaskId Subtask ID.
+   * @param subTask Subtask update payload.
+   */
   updateSubTask(
     taskId: number,
     subTaskId: number,
-    subTaskData: CreateSubTask
+    subTask: CreateOrUpdateSubTask
   ): Observable<SubTask> {
     return this.http.put<SubTask>(
-      `${this.apiUrl}/${taskId}/subtasks/${subTaskId}`,
-      subTaskData
+      `${this.baseUrl}/${taskId}/subtasks/${subTaskId}`,
+      subTask
     );
   }
 
-  // Delete a subtask
+  /**
+   * Delete a subtask by task ID and subtask ID.
+   * @param taskId Task ID.
+   * @param subTaskId Subtask ID.
+   */
   deleteSubTask(taskId: number, subTaskId: number): Observable<void> {
     return this.http.delete<void>(
-      `${this.apiUrl}/${taskId}/subtasks/${subTaskId}`
+      `${this.baseUrl}/${taskId}/subtasks/${subTaskId}`
+    );
+  }
+
+  /**
+   * Get all subtasks for a task.
+   * @param taskId Task ID.
+   */
+  getAllSubTasks(taskId: number): Observable<{ subTasks: SubTask[] }> {
+    return this.http.get<{ subTasks: SubTask[] }>(
+      `${this.baseUrl}/${taskId}/subtasks/all`
     );
   }
 }

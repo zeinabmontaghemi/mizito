@@ -1,5 +1,10 @@
 /* Overall container styling */
 .container {
+  position: fixed; /* Ensures the menu is fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the width 100% to cover the entire screen */
+  height: 100%;
   display: flex;
   background-color: #6b93ff;
   height: 100vh;

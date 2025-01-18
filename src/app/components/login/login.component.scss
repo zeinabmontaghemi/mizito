@@ -1,13 +1,10 @@
-/* Overall page styling */
-body {
-  justify-content: center; /* Horizontally center content */
-  align-items: center; /* Vertically center content */
-  font-family: "Arial", sans-serif;
-  text-align: center;
-}
-
 /* Button Group styling */
 .button-group {
+  position: fixed; /* Ensures the menu is fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the width 100% to cover the entire screen */
+  height: 100%;
   margin: 0;
   padding: 0;
   height: 100vh;

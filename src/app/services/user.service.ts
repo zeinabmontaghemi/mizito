@@ -23,9 +23,9 @@ export class UserService {
     return this.http.get<User>(`${this.apiUrl}/${userId}`);
   }
   getUser(): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}`);
+    return this.http.get<User>(`${this.apiUrl}/current`);
   }
-
+  /// add image url to the request body
   // Create or update a user
   updateUser(
     userId: number,
@@ -35,6 +35,7 @@ export class UserService {
       userRole: string;
       password: string;
       active: boolean;
+      imageUrl: string;
     }
   ): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/${userId}`, userData);

@@ -1,20 +1,13 @@
-// subtask.model.ts
-import { Task } from './task';
-
 export interface SubTask {
   id: number;
+  taskId: number;
   title: string;
   isCompleted: boolean;
-  task: Task; // Reuse the existing Task model
   createdAt: string;
   updatedAt: string;
 }
 
-export interface CreateSubTask {
+export interface CreateOrUpdateSubTask {
   title: string;
   isCompleted: boolean;
-}
-
-export interface GetSubTasksResponse {
-  subTasks: SubTask[];
 }

@@ -1,4 +1,4 @@
-// user.model.ts
+import { Project } from './task';
 export interface User {
   id: number;
   username: string;
@@ -9,4 +9,19 @@ export interface User {
   updatedAt: string;
   active: boolean;
   imageUrl: string;
+}
+
+export interface Team {
+  id: number;
+  name: string;
+  description: string;
+  projects: Project[];
+  members: User[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CreateOrUpdateTeam {
+  name: string;
+  description: string;
 }

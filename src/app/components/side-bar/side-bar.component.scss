@@ -1,6 +1,61 @@
+/* Full screen menu container */
 .menu {
+  position: fixed; /* Ensures the menu is fixed in place */
+  top: 0;
+  left: 0;
+  width: 100%; /* Make the width 100% to cover the entire screen */
+  height: 100%; /* Make the height 100% to cover the entire screen */
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  position: relative;
-  height: 100vh; /* Full viewport height */
+  // justify-content: center; /* Center the content vertically */
+  align-items: center; /* Center the content horizontally */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Ensure it overlays on top of other elements */
+}
+
+/* Menu title styling */
+.menu p {
+  font-size: 30px; /* Increase font size for better visibility */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+button {
+  width: 100%; /* Make buttons take up 80% of the width of the screen */
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Projects button styling */
+.btn-go-to-project-list {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-go-to-project-list:hover {
+  background-color: #0056b3;
+}
+
+/* Tasks button styling */
+.btn-go-to-tasks-list {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-go-to-tasks-list:hover {
+  background-color: #218838;
+}
+
+/* Disabled button styling */
+button:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
 }

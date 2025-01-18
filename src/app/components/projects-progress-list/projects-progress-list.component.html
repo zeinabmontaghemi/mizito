@@ -1,0 +1,24 @@
+<p>projects-progress-list works!</p>
+<app-project-status [projectId]="1"></app-project-status>
+<!-- Use @if to conditionally display content -->
+@if (!isLoading && !isError) {
+<div class="projects-container">
+  <!-- Use @for for looping through projects -->
+  @for (project of projects ; track project.id) {
+  <div
+    class="project-box"
+    draggable="true"
+    (click)="navigateToProjectDetails(project.id)"
+  >
+    <h3>{{ project.name }}</h3>
+    <app-project-status [projectId]="1"></app-project-status>
+  </div>
+  }
+</div>
+} @else {
+<!-- Handle loading and error states -->
+@if (isLoading) {
+<div class="loading">Loading projects...</div>
+} @else {
+<div class="error">Failed to load projects. Please try again later.</div>
+} }

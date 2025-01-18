@@ -7,7 +7,8 @@
   </div>
   <div class="center">
     <app-work-desk></app-work-desk>
-    <!-- i should add projects status list component and use project status in it for here and it is visible for admins -->
+
+    @if(isAdmin){<app-projects-progress-list></app-projects-progress-list>}
   </div>
   <div class="right" [class.open]="isSidebarOpen">
     <app-side-bar></app-side-bar>

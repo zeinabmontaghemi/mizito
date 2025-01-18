@@ -5,8 +5,9 @@
   </button>
 
   <!-- Use @if to conditionally display content -->
-  @if (!isLoading && !isError) {
+
   <div class="projects-container">
+    @if (!isLoading && !isError) {
     <!-- Use @for for looping through projects -->
     @for (project of projects ; track project.id) {
     <div
@@ -19,15 +20,14 @@
         alt="Project Image"
       />
       <h3>{{ project.name }}</h3>
-      <app-project-status></app-project-status>
+      <app-project-status [projectId]="1"></app-project-status>
     </div>
-    }
+    } } @else {
+    <!-- Handle loading and error states -->
+    @if (isLoading) {
+    <div class="loading">Loading projects...</div>
+    } @else {
+    <div class="error">Failed to load projects. Please try again later.</div>
+    } }
   </div>
-  } @else {
-  <!-- Handle loading and error states -->
-  @if (isLoading) {
-  <div class="loading">Loading projects...</div>
-  } @else {
-  <div class="error">Failed to load projects. Please try again later.</div>
-  } }
 </div>

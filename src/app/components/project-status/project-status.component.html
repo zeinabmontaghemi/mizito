@@ -1,7 +1,11 @@
-<div class="progress-bar">
-  <div
-    class="progress"
-    [style.width.%]="progress"
-    [ngClass]="{ completed: progress === 100 }"
-  ></div>
+@if(isLoading){
+<div class="loading">Loading project progress...</div>
+} @if(!isLoading){
+<div>
+  <h3>Project Progress</h3>
+  <div class="progress-bar">
+    <div class="progress-bar-fill" [style.width.%]="progress"></div>
+  </div>
+  <p>{{ progress | number : "1.0-2" }}%</p>
 </div>
+}

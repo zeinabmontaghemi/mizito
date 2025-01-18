@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectStatusComponent } from '../project-status/project-status.component';
 import { Project } from '../../models/task';
 import { ProjectService } from '../../services/project.service';
 import { Router } from '@angular/router';
-import { ProjectStatusComponent } from '../project-status/project-status.component';
 
 @Component({
-  selector: 'app-project-list',
+  selector: 'app-projects-progress-list',
   standalone: true,
   imports: [ProjectStatusComponent],
-  templateUrl: './project-list.component.html',
-  styleUrl: './project-list.component.scss',
+  templateUrl: './projects-progress-list.component.html',
+  styleUrl: './projects-progress-list.component.scss',
 })
-export class ProjectListComponent implements OnInit {
+export class ProjectsProgressListComponent implements OnInit {
   projects: Project[] = [];
   isLoading = true;
   isError = false;
@@ -36,13 +36,5 @@ export class ProjectListComponent implements OnInit {
 
   navigateToProjectDetails(projectId?: number): void {
     this.router.navigate([`dashboard/project-details/${projectId}`]);
-  }
-  createNewProject(): void {
-    this.router.navigate(['dashboard/create-project']);
-  }
-
-  onDragEnd(event: any): void {
-    // Handle reordering logic here if needed.
-    console.log('New layout after drag:', event);
   }
 }
